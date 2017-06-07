@@ -2,6 +2,8 @@
 
 Examples to be used with the [Building and Deploying Microservices with the Serverless Framework](https://conferences.oreilly.com/fluent/fl-ca/public/schedule/detail/58496) tutorial at [Fluent Conf 2017](https://conferences.oreilly.com/fluent/fl-ca).
 
+**NOTE: Example code will be added to this repo after June 18, 2017**
+
 ## Install
 
 1. Node.js v6.5.0 or later
