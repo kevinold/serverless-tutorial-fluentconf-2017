@@ -1,0 +1,5 @@
+config:
+  client:
+    baseDir: testapp
+    distDir: build
+    bucketName: dev.test12345.com

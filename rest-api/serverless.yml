@@ -1,0 +1,94 @@
+service: rest-api
+
+frameworkVersion: ">=1.8.0 <2.0.0"
+
+custom:
+  config: ${file(./config/${opt:stage, self:provider.stage}.yml):config}
+  webpackIncludeModules: true
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment:
+    CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    SERVERLESS_REGION: ${opt:region, self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: arn:aws:dynamodb:${self:provider.environment.SERVERLESS_REGION}:*:table/${self:provider.environment.CONTACTS_TABLE}
+
+functions:
+  create:
+    handler: handler.createContact
+    environment:
+      CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    events:
+      - http:
+          path: contacts
+          method: post
+          cors: true
+  list:
+    handler: handler.listContacts
+    environment:
+      CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    events:
+      - http:
+          path: contacts
+          method: get
+          cors: true
+  get:
+    handler: handler.getContact
+    environment:
+      CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    events:
+      - http:
+          path: contacts/{id}
+          method: get
+          cors: true
+  update:
+    handler: handler.updateContact
+    environment:
+      CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    events:
+      - http:
+          path: contacts/{id}
+          method: put
+          cors: true
+  delete:
+    handler: handler.deleteContact
+    environment:
+      CONTACTS_TABLE: ${self:custom.config.contactsTable}
+    events:
+      - http:
+          path: contacts/{id}
+          method: delete
+          cors: true
+
+resources:
+  Resources:
+    ContactsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.config.contactsTable}

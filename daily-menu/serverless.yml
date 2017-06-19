@@ -1,0 +1,34 @@
+service: daily-menu
+
+frameworkVersion: ">=1.8.0 <2.0.0"
+
+custom:
+  config: ${file(./config/${opt:stage, self:provider.stage}.yml):config}
+  webpackIncludeModules: true
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  checkMenu:
+    handler: handler.checkMenu
+    environment:
+      OCR_SPACE_API_KEY: ${self:custom.config.ocrSpaceApiKey}
+    timeout: 30
+    events:
+      - schedule: cron(0 15 * * ? *) # 15 UTC, daily = 10am CST
+
+  checkMenuEndpoint:
+    handler: handler.checkMenu
+    environment:
+      OCR_SPACE_API_KEY: ${self:custom.config.ocrSpaceApiKey}
+    timeout: 30
+    events:
+      - http:
+          path: checkMenu
+          method: get
+          cors: true

@@ -1,0 +1,37 @@
+service: csv-to-json
+
+frameworkVersion: ">=1.8.0 <2.0.0"
+
+custom:
+  config: ${file(./config/${opt:stage, self:provider.stage}.yml):config}
+  webpackIncludeModules: true
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment:
+    S3_BUCKET: ${self:custom.config.bucketName}
+    CSV_FILE: ${self:custom.config.csvFile}
+    JSON_FILE: ${self:custom.config.jsonFile}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+functions:
+  parseCSV:
+    handler: handler.parseCSV
+    events:
+      - s3:
+          bucket: ${self:custom.config.bucketName}
+  readJSON:
+    handler: handler.readJSON
+    events:
+      - http:
+          path: myDB
+          method: get
+          cors: true

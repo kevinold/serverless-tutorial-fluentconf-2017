@@ -1,0 +1,3 @@
+config/staging.yml
+config/prod.yml
+/node_modules

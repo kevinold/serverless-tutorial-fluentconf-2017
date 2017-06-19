@@ -1,0 +1,36 @@
+{
+  "name": "serverless-workshop-revolutionconf-2017",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "clean": "rimraf build-lib dist build-es coverage",
+    "build:examples": "./node_modules/cross-env/bin/cross-env.js BABEL_ENV=commonjs ./node_modules/babel-cli/bin/babel-node.js buildAll.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinold/serverless-workshop-revolutionconf-2017.git"
+  },
+  "keywords": [
+    "serverless"
+  ],
+  "authors": [
+    "Kevin Old <kevinold@gmail.com> (https://github.com/kevinold)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinold/serverless-workshop-revolutionconf-2017/issues"
+  },
+  "homepage": "https://github.com/kevinold/serverless-workshop-revolutionconf-2017",
+  "devDependencies": {
+    "babel-cli": "^6.3.15",
+    "babel-core": "^6.3.15",
+    "babel-eslint": "^7.0.0",
+    "babel-loader": "^6.2.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-register": "^6.3.13",
+    "cross-env": "^2.0.1",
+    "rimraf": "^2.3.4",
+    "yarn": "^0.24.4"
+  }
+}

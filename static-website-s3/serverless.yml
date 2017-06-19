@@ -1,0 +1,14 @@
+service: static-website-s3
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+plugins:
+  - serverless-client-s3
+
+custom:
+  config: ${file(./config/${opt:stage, self:provider.stage}.yml):config}
+  client: ${self:custom.config.client}
+
+provider:
+  name: aws
+  runtime: nodejs6.10

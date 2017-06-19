@@ -1,0 +1,3 @@
+config:
+  jokesTable: com-revconf-jokes-dev
+  jokeAuthorsTable: com-revconf-jokeAuthors-dev

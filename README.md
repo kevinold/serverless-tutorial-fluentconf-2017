@@ -2,8 +2,6 @@
 
 Examples to be used with the [Building and Deploying Microservices with the Serverless Framework](https://conferences.oreilly.com/fluent/fl-ca/public/schedule/detail/58496) tutorial at [Fluent Conf 2017](https://conferences.oreilly.com/fluent/fl-ca).
 
-**NOTE: Example code will be added to this repo after June 18, 2017**
-
 ## Install
 
 1. Node.js v6.5.0 or later
@@ -17,6 +15,6 @@ Examples to be used with the [Building and Deploying Microservices with the Serv
 
     - (Optional) [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) or update the version you to the latest.
 4. Run `yarn install`
-5. Run `yarn run build:examples` to download node dependencies for all examples OR run `yarn install` inside of each directory.
+5. Run `yarn run build:examples` (*Mac and Linux only -- may not work on Windows*) to download node dependencies for all examples *OR* run `yarn install` inside of each directory
 
 

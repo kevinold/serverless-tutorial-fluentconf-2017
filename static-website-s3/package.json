@@ -1,0 +1,10 @@
+{
+  "name": "static-website-s3",
+  "version": "1.0.0",
+  "description": "Static Website to S3 Demo",
+  "main": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-client-s3": "https://github.com/kevinold/serverless-client-s3#serverless-1.0"
+  }
+}

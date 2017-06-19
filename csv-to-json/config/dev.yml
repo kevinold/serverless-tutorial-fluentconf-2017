@@ -1,0 +1,4 @@
+config:
+  csvFile: database.csv
+  jsonFile: database.json
+  bucketName: com-revconf-data-dev

@@ -1,0 +1,14 @@
+{
+  "name": "simple-http",
+  "version": "1.0.0",
+  "description": "Simple HTTP Serverless Demo",
+  "main": "",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.4.2"
+  }
+}
