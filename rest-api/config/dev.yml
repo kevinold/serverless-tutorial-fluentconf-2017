@@ -1,2 +1,2 @@
 config:
-  contactsTable: com-revconf-contacts-dev
+  contactsTable: com-fluentconf-contacts-dev
