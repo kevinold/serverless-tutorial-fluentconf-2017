@@ -13,7 +13,7 @@ Examples to be used with the [Building and Deploying Microservices with the Serv
 
     - [Configure the AWS CLI to use the admin user](http://docs.aws.amazon.com/cli/latest/reference/configure/)
 
-    - (Optional) [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) or update the version you to the latest.
+    - (Optional) [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) or update the version you have to the latest.
 4. Run `yarn install`
 5. Run `yarn run build:examples` (**Mac and Linux only -- may not work on Windows**) to download node dependencies for all examples **OR** run `yarn install` inside of each directory
 
